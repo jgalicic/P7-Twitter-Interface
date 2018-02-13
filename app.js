@@ -17,6 +17,7 @@ let numOfMessages = 5;
 let fullName = "";
 
 // Create an object to hold the data from Twitter
+
 var myTweetArray = {
   tweets: {},
   friends: {},
@@ -57,7 +58,6 @@ T.get('friends/list', { count: 5 },  function (err, data, response) {
 
 // Direct Messages
 
-
 T.get('direct_messages', { count: 5 },  function (err, data, response) {
 
   if(err) {
@@ -68,26 +68,11 @@ T.get('direct_messages', { count: 5 },  function (err, data, response) {
 
   for ( i = 0; i < numOfMessages; i++) {
     data[i].timeFromTweet = returnTimeFromTweet(data[i].created_at);
-    console.log(i);
-    console.log(data[i].timeFromTweet);
-    console.log(returnTimeFromTweet(data[i].created_at))
   }
-
-
-  // ALL TIME FROM TWEET IS SHOWING UP AS "17d"
-  // NEED
-  // TO
-  // FIX
-  // THIS
-  // !!!!!
 
   myTweetArray.direct_messages = data;
 
-
-     
 });
-
-
 
 app.get('/', (req, res) => {
 
@@ -95,11 +80,7 @@ app.get('/', (req, res) => {
 
 });
 
-
 app.listen(3000);
-
-
-
 
 
 /**********************
