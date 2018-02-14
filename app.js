@@ -11,10 +11,10 @@ app.use('/static', express.static('public'));
 app.set('view engine', 'pug');
 
 
-let screenName = "justingalicic";
 let numOfTweets = 5;
+let numOfFriends = 5;
 let numOfMessages = 5;
-let fullName = "";
+
 
 // Create an object to hold the data from Twitter
 
@@ -26,7 +26,7 @@ var myTweetArray = {
 
 // Tweet timeline
 
-T.get('statuses/user_timeline', {screen_name: screenName, count: numOfTweets}, function(err, data, response) {
+T.get('statuses/user_timeline', {count: numOfTweets}, function(err, data, response) {
 
   if (err) {
     console.log(err);
@@ -46,7 +46,7 @@ T.get('statuses/user_timeline', {screen_name: screenName, count: numOfTweets}, f
 
 // Following
 
-T.get('friends/list', { count: 5 },  function (err, data, response) {
+T.get('friends/list', { count: numOfFriends },  function (err, data, response) {
 
   if (err) {
     console.log(err);
@@ -58,7 +58,7 @@ T.get('friends/list', { count: 5 },  function (err, data, response) {
 
 // Direct Messages
 
-T.get('direct_messages', { count: 5 },  function (err, data, response) {
+T.get('direct_messages', { count: numOfMessages },  function (err, data, response) {
 
   if(err) {
     console.log(err);
@@ -113,13 +113,4 @@ function returnTimeFromTweet(timeStamp) {
   }
   return timeFromTweet;
 }
-
-/**********************
-     END FUNCTIONS
-**********************/
-
-
-
-
-
 
