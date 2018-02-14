@@ -1,6 +1,6 @@
 const express = require('express');
 const Twit = require('twit');
-const config = require('.config');
+const config = require('./config');
 
 const app = express();
 const T = new Twit(config);
